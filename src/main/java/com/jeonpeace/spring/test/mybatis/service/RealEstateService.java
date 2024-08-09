@@ -38,4 +38,43 @@ public class RealEstateService {
 		
 	}
 	
+	public int addRealEstate(RealEstate realEstate) {
+		
+		int count = realEstateRepository.insertRealEstate(realEstate);
+		
+		return count;
+	}
+	
+	public int addRealEstate2(
+			int realtorId
+			, String address
+			, int area
+			, String type
+			, int price
+			, Integer rentPrice) {
+		
+		int count = realEstateRepository.insertRealEstate2(realtorId, address, area, type, price, rentPrice);
+		
+		return count;
+		
+	}
+	
+	public int updateTypePriceById(
+			int id
+			, String type
+			, int price) {
+		
+		int count = realEstateRepository.updateTypePriceById(id, type, price);
+		
+		return count;
+	}
+	
+	public int deleteById(int id) {
+		
+		int count = realEstateRepository.deleteById(id);
+		
+		return count;
+		
+	}
+	
 }

@@ -57,4 +57,64 @@
  		DESC
 	</select>	
 	
+	<insert id="insertRealEstate" parameterType="com.jeonpeace.spring.test.mybatis.domain.RealEstate">
+		INSERT
+			`real_estate`
+		(
+			`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+		)
+		VALUE
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+		)
+	</insert>
+	
+	<insert id="insertRealEstate2" parameterType="com.jeonpeace.spring.test.mybatis.domain.RealEstate">
+		INSERT
+			`real_estate`
+		(
+			`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+		)
+		VALUE
+		(
+			#{realtorId}		
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+		)	
+	</insert>
+	
+	<update id="updateTypePriceById" parameterType="com.jeonpeace.spring.test.mybatis.domain.RealEstate">
+		UPDATE
+			`real_estate`
+		SET
+			`type` = #{type}, `price` = #{price}, `updatedAt` = now()
+		WHERE
+			`id` = #{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="com.jeonpeace.spring.test.mybatis.domain.RealEstate">
+		DELETE FROM
+			`real_estate`
+		WHERE
+			`id` = #{id}
+	</delete>
+	
 </mapper>
