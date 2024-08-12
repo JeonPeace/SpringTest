@@ -58,7 +58,7 @@
 	</select>	
 	
 	<insert id="insertRealEstate" parameterType="com.jeonpeace.spring.test.mybatis.domain.RealEstate">
-		INSERT
+		INSERT INTO
 			`real_estate`
 		(
 			`realtorId`
