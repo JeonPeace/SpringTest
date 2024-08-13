@@ -19,4 +19,25 @@
  			, #{temperature}	
  		)
  	</insert>
+ 	<select id="selectRecentSeller" resultType="com.jeonpeace.spring.test.seller.domain.Seller">
+ 		SELECT
+ 			`profileImage`
+ 			, `nickname`
+ 			, `temperature`
+ 		FROM
+ 			`seller`
+ 		ORDER BY
+ 			`id` DESC
+ 		LIMIT 1
+ 	</select>
+ 	<select id="selectSellerById" resultType="com.jeonpeace.spring.test.seller.domain.Seller">
+ 		SELECT
+ 			`profileImage`
+ 			, `nickname`
+ 			, `temperature`
+ 		FROM
+ 			`seller`
+ 		WHERE
+ 			`id` = #{id}
+ 	</select>
  </mapper>
