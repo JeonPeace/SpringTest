@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공인중개사 정보</title>
+</head>
+<body>
+
+	<h2>공인중개사 정보</h2>
+	
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td th:text="${result.id}">idTest</td>
+		</tr>
+		<tr>
+			<td>상호명</td>
+			<td th:text="${result.office}">officeTest</td>
+		</tr>
+		<tr>
+			<td>전화번호</td>
+			<td th:text="${result.phoneNumber}">phoneNumberTest</td>
+		</tr>
+		<tr>
+			<td>주소</td>
+			<td th:text="${result.address}">addressTest</td>
+		</tr>
+		<tr>
+			<td>등급</td>
+			<td th:text="${result.grade}">gradeTest</td>
+		</tr>
+	</table>
+
+</body>
+</html>
