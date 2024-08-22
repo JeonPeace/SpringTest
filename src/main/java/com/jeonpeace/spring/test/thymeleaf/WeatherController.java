@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,16 +40,12 @@ public class WeatherController {
 	}
 	
 	@PostMapping("/create")
-	public String create(@RequestParam("date") LocalDate date
+	public String create(@RequestParam("date") @DateTimeFormat(pattern="yyyy년 MM월 dd일") LocalDate date
 						, @RequestParam("weather") String weather
 						, @RequestParam("temperatures") double temperatures
 						, @RequestParam("precipitation") double precipitation
 						, @RequestParam("microDust") String microDust
 						, @RequestParam("windSpeed") double windSpeed) { 
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		
-		date = LocalDate.parse(date.format(formatter));
 		
 		int count = weatherService.addWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
 		

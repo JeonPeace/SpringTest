@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.jeonpeace.spring.test.ajax.repository.FavoriteRepository">
+ 
+ 	<select id="selectFavoriteList" resultType="com.jeonpeace.spring.test.ajax.domain.Favorite">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `url`
+ 		FROM
+ 			`url_list`
+ 		ORDER BY
+ 			`id` DESC
+ 	</select>
+ 
+ 	<insert id="insertFavorite" parameterType="com.jeonpeace.spring.test.ajax.domain.Favorite">
+ 		INSERT INTO 
+ 			`url_list`
+ 		(
+ 			`name`
+ 			, `url`
+ 		)		
+ 		VALUE
+ 		(
+ 			#{name}
+ 			, #{url}
+ 		)
+ 	</insert>
+ 	<select id="selectSameUrl" parameterType="com.jeonpeace.spring.test.ajax.domain.Favorite">
+ 		SELECT
+ 			`url`
+ 		FROM
+ 			`url_list`
+ 		WHERE
+ 			`url` = #{url}
+ 	</select>
+ </mapper>
