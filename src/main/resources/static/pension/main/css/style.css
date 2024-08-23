@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* header {
+    height: 150px;
+} */
+
+header > .main-logo {
+    height: 150px;
+}
+
+/* .contents {
+    height: 800px;
+} */
+
+.contents > .main-menu {
+    height: 50px;
+    background-color: rgb(230, 131, 89);
+}
+
+.contents > .banner {
+    height: 500px;
+}
+
+.contents > .main-contents {
+    height: 280px;
+    background-color: rgb(135, 59, 29);
+}
+
+.main-contents > .reservation {
+    background-color: rgb(219, 92, 32);
+}
+
+#notMemberInput {
+    display: none;
+}
+
+.reservationNumber {
+    font-size: 30px;
+}
+
+footer {
+    height: 120px;
+}

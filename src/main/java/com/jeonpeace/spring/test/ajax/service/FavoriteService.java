@@ -28,9 +28,22 @@ public class FavoriteService {
 		return count;
 	}
 	
-	public int checkFavorite(String url) {
+	public boolean checkFavorite(String url) {
 		
 		int count = favoriteRepository.selectSameUrl(url);
+		
+		if(count == 0) {
+			// 중복 안됨
+			return false;
+		}else {
+			// 중복됨
+			return true;
+		}
+	}
+	
+	public int deleteFavorite(int id) {
+		
+		int count = favoriteRepository.deleteFavorite(id);
 		
 		return count;
 	}

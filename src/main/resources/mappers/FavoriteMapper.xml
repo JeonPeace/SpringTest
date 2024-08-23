@@ -14,7 +14,6 @@
  		ORDER BY
  			`id` DESC
  	</select>
- 
  	<insert id="insertFavorite" parameterType="com.jeonpeace.spring.test.ajax.domain.Favorite">
  		INSERT INTO 
  			`url_list`
@@ -28,12 +27,18 @@
  			, #{url}
  		)
  	</insert>
- 	<select id="selectSameUrl" parameterType="com.jeonpeace.spring.test.ajax.domain.Favorite">
+ 	<select id="selectSameUrl" parameterType="string" resultType="int">
  		SELECT
- 			`url`
+			count(*)
  		FROM
  			`url_list`
  		WHERE
  			`url` = #{url}
  	</select>
+ 	<delete id="deleteFavorite" parameterType="int">
+ 		DELETE FROM
+ 			`url_list`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
  </mapper>

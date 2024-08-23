@@ -16,8 +16,8 @@
 			<input type="text" class="form-control col-6" id="urlInput"><button type="button" class="btn btn-primary text-white col-3" id="checkBtn">중복확인</button>
 		</div>
 		<div>
-			<span class="text-danger" id="duplicate" style="display:none;">중복된 url입니다.</span>
-			<span class="text-primary" id="notDuplicate" style="display:none;">저장 가능한 url입니다.</span>
+			<span class="text-danger d-none" id="duplicate">중복된 url입니다.</span>
+			<span class="text-primary d-none" id="notDuplicate">저장 가능한 url입니다.</span>
 		</div>
 		<button type="button" class="btn btn-success text-white w-75" id="addBtn">추가</button>
 	</div>
@@ -86,12 +86,14 @@
 						, url:"/ajax/favorite/checkDuplicate"
 						, data:{"url":url}
 						, success:function(data){
-							if(data.result == "duplicate"){
-								$("#duplicate").show();
-								$("#notDuplicate").hide();
+							// {"isDuplicate":true}
+							// {"isDuplicate":false}
+							if(data.isDuplicate){
+								$("#duplicate").removeClass("d-none");
+								$("#notDuplicate").addClass("d-none");
 							}else{
-								$("#notDuplicate").show();
-								$("#duplicate").hide();
+								$("#notDuplicate").removeClass("d-none");
+								$("#duplicate").addClass("d-none");
 							}
 						}
 						, error:function(){
