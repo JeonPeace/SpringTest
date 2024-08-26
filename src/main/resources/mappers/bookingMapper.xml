@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.jeonpeace.spring.test.pension.repository.PensionRepository">
+ 	<select id="selectBookingList" resultType="com.jeonpeace.spring.test.pension.domain.Booking">
+ 		SELECT
+ 			`id`
+ 			,`name`
+ 			, `date`
+ 			, `day`
+ 			, `headcount`
+ 			, `phoneNumber`
+ 			, `state`
+ 		FROM
+ 			`booking`
+ 		ORDER BY
+ 			`id` DESC
+ 	</select>
+ 	<insert id="insertBooking" parameterType="com.jeonpeace.spring.test.pension.domain.Booking">
+ 		INSERT INTO 
+ 			`booking`
+ 		(
+ 			`name`
+ 			, `date`
+ 			, `day`
+ 			, `headcount`
+ 			, `phoneNumber`
+ 			, `state`
+ 		)		
+ 		VALUE
+ 		(
+ 			#{name}
+ 			, #{date}
+ 			, #{day}
+ 			, #{headcount}
+ 			, #{phoneNumber}
+ 			, '대기중'
+ 		)
+ 	</insert>
+ 	<delete id="deleteBooking" parameterType="int">
+ 		DELETE FROM
+ 			`booking`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete> 	
+ 	<select id="checkBooking" resultType="com.jeonpeace.spring.test.pension.domain.Booking" parameterType="com.jeonpeace.spring.test.pension.domain.Booking">
+ 		SELECT
+			`date`
+			, `day`
+			, `headcount`
+			, `state`
+		FROM
+			`booking`
+		WHERE
+			`name` = #{name} AND `phoneNumber` = #{phoneNumber}
+ 	</select>
+ </mapper>
