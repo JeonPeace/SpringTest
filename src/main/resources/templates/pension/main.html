@@ -102,14 +102,14 @@
 
 	        $.ajax({
 	        	
-				type:"post"
-					, url:"/"
+				type:"get"
+					, url:"/pension/check"
 					, data:{"name":name, "phoneNumber":phoneNumber}
 					, success:function(data){
 						if(data.result == "success"){
-							alert("확인 성공!!");
-						}else{
-							alert("확인 실패");
+							alert("이름 : " + data.booking.name + "\n날짜 : " + data.booking.date + "\n전화번호 : " + data.booking.phoneNumber);
+						}else if(data.result == "fail"){
+							alert("조회된 데이터가 없습니다!!");
 						}
 					}
 					, error:function(){

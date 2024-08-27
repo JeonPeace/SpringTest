@@ -44,12 +44,17 @@
  		WHERE
  			`id` = #{id}
  	</delete> 	
- 	<select id="checkBooking" resultType="com.jeonpeace.spring.test.pension.domain.Booking" parameterType="com.jeonpeace.spring.test.pension.domain.Booking">
+ 	<select id="checkBooking" resultType="com.jeonpeace.spring.test.pension.domain.Booking" parameterType="String">
  		SELECT
-			`date`
+ 			`id`
+ 			, `name`
+			, `date`
+			, `phoneNumber`
 			, `day`
 			, `headcount`
 			, `state`
+			, `createdAt`
+			, `updatedAt`
 		FROM
 			`booking`
 		WHERE

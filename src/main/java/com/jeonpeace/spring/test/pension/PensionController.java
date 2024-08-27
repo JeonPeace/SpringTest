@@ -82,7 +82,7 @@ public class PensionController {
 		return resultMap;
 	}
 	
-	@PostMapping("/check")
+	@GetMapping("/check")
 	@ResponseBody
 	public Map<String, Object> checkBooking(@RequestParam("name") String name
 											, @RequestParam("phoneNumber") String phoneNumber){
@@ -90,18 +90,14 @@ public class PensionController {
 		Booking booking = pensionService.checkBooking(name, phoneNumber);
 		
 		Map<String, Object> resultMap = new HashMap<>();
-		if(booking.getName() == name) {
+		if(booking != null) {
 			resultMap.put("result", "success");
-			resultMap.put("name", name);
-			resultMap.put("phoneNumber", phoneNumber);
-			resultMap.put("day", booking.getDay());
-			resultMap.put("date", booking.getDate());
-			resultMap.put("headcount", booking.getHeadcount());
+			resultMap.put("booking", booking);
 		}else {
 			resultMap.put("result", "fail");
 		}
 		
-		return resultMap;		
+		return resultMap;
 	}
 	
 }
